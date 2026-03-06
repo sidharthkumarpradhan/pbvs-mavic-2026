@@ -1,0 +1,50 @@
+# Default training and inference configuration for MAVIC-T challenge.
+# Adjust paths below to match your local data layout.
+
+# -- Data paths ----------------------------------------------------------------
+data:
+  train_sar_dir: "data/train/sar2eo/sar"
+  train_eo_dir: "data/train/sar2eo/eo"
+  test_dir: "data/test"
+  uc_davis_dir: "data/uc_davis"     # set to null if unavailable
+
+# -- Training ------------------------------------------------------------------
+training:
+  epochs: 5
+  batch_size: 16
+  image_size: 256
+  lr_generator: 2.0e-4
+  lr_discriminator: 1.0e-4
+  lambda_l1: 100.0
+  scheduler_t0: 2
+  scheduler_t_mult: 1
+  grad_clip_max_norm: 1.0
+  num_workers: 2
+  apply_speckle: true
+
+# -- Preprocessing (SpeckleFilterBank) ----------------------------------------
+speckle_filter:
+  noise_var: 0.05
+  bilateral_d: 9
+  bilateral_sc: 75.0
+  bilateral_ss: 75.0
+
+# -- Post-processing -----------------------------------------------------------
+gamma_correction:
+  target_mean: 128.0
+
+histogram_transfer:
+  alpha: 0.25
+  bilateral_d: 9
+  bilateral_sc: 50.0
+  bilateral_ss: 50.0
+
+clahe:
+  clip_limit: 2.0
+  tile_grid: [8, 8]
+
+# -- Inference -----------------------------------------------------------------
+inference:
+  weights_path: "weights/sar2eo_final.pth"
+  output_dir: "submission"
+  image_size: 256
