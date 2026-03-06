@@ -283,6 +283,12 @@ submission.zip
 
 Our solution achieved **Rank 1** on the official PBVS 2026 MAVIC-T CodaBench leaderboard.
 
+<p align="center">
+  <img src="figures/cvpr_competition_winner.png" alt="PBVS 2026 MAVIC-T Competition Result — Rank 1" width="720"/>
+  <br>
+  <em>Rank 1 — PBVS 2026 MAVIC-T Challenge @ CVPR 2026</em>
+</p>
+
 | Sub-task | Method | Model Params |
 |----------|--------|-------------|
 | SAR → EO | Conditional U-Net GAN | 54.4M |
